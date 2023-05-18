@@ -1,0 +1,5 @@
+# hardcoded subtitles Windows
+C:\ffmpeg\bin\ffmpeg.exe -i input_video.mp4 -filter_complex "subtitles=subtitles.srt:force_style='FontSize=24'" -c:a copy output_video.mp4
+# hardcoded subtitles Linux
+ffmpeg -i input_video.mp4 -filter_complex "subtitles=subtitles.srt:force_style='FontSize=24'" -c:a copy output_video.mp4
+
