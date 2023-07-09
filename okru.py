@@ -14,12 +14,12 @@ browser = webdriver.Chrome(options=chrome_options)
 p = 'plugin://plugin.video.sendtokodi/?'
 
 # Deschide pagina web
-url = "https://ok.ru/video/c5317365"  # Trebuie editat URL-ul canalului
+url = "Website url"  # Trebuie editat URL-ul canalului
 browser.get(url)
 
 # Derulează în jos pentru a încărca toate videoclipurile
 # Derulează cu 1000 de pixeli de fiecare dată
-SCROLL_PAUSE_TIME = 0.5
+SCROLL_PAUSE_TIME = 1
 
 # Obține înălțimea derulării
 last_height = browser.execute_script("return document.body.scrollHeight")
@@ -39,10 +39,11 @@ while True:
 
 # Obține link-urile și titlurile
 links = browser.find_elements(By.XPATH, "//div[@data-l='t,movie']//a[@tabindex='-1']")
-titles = browser.find_elements(By.XPATH, "//a[contains(@title, 'Doctor Quinn')]")  # Trebuie editat cu numele canalului
+#titles = browser.find_elements(By.XPATH, "//a[contains(@title, '')]")  # Trebuie editat cu numele canalului
+titles = browser.find_elements(By.XPATH, "//div[@data-l='t,movie']//a[@class='video-card_n ellip']")
 
 # Creează folder-ul
-folder_name = 'Doctor Quinn'  # Trebuie editat cu numele canalului
+folder_name = "Nume Canal"  # Trebuie editat cu numele canalului
 if not os.path.exists(folder_name):
     os.makedirs(folder_name)
 
@@ -58,3 +59,5 @@ for i in range(len(links)):
 
 # Închide browser-ul
 browser.quit()
+
+
